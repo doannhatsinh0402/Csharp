@@ -1,0 +1,52 @@
+using System;
+namespace Products
+{
+    class Product
+    {
+        public string name;
+        public int numberaval;
+        public int price;
+        public Product()
+        {
+            Console.Write("Enter name of product: ");
+            name = Console.ReadLine();
+            Console.Write("Enter amount: ");
+            numberaval = Int32.Parse(Console.ReadLine());
+            Console.Write("Enter price of product: ");
+            price = Int32.Parse(Console.ReadLine());
+        }
+    }
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            int amount = 0;
+            Product A = new Product();
+            Enter(ref amount);
+            Console.Write("Total price = " + Bill(A,amount));
+            
+        }
+        static float Bill(Product A, int amount)
+        {
+            float sale = 1.0f;
+            if(amount<A.numberaval)
+            {
+                if(amount>=50&&amount<=100)
+                    sale = 0.92f;
+                else   
+                    sale = 0.88f;
+            }
+            else
+            {
+                Console.WriteLine("too much");
+                return 0;
+            }
+            return amount*A.price*sale;
+        }
+        static void Enter(ref int amount)
+        {
+            Console.Write("Enter number: ");
+            amount = Int32.Parse(Console.ReadLine());
+        }
+    }
+}

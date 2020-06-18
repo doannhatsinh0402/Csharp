@@ -1,0 +1,45 @@
+using System;
+namespace Electonic
+{
+    class Guest
+    {
+        public string name;
+        public int Kw;
+        public Guest()
+        {
+            Console.Write("Enter guest's name ");
+            name = Console.ReadLine();
+            Console.Write("Enter number of Kw ");
+            Kw = Int32.Parse(Console.ReadLine());
+        }
+    }
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            Guest A = new Guest();
+            int price = CalElec(A);
+            Console.WriteLine("Total price = {0}",price);
+        }
+        static int CalElec(Guest A)
+        {
+            int kiLo = 0;
+            int price = 0;
+            int i = 0;
+            int[] pTable  = new int[] {500,650,850,850,1100,1100,1100,1300};
+            while(kiLo<=A.Kw)
+            {
+                if(i<=7)
+                    price = price + 50*pTable[i++];
+                else 
+                    {
+                        price = price + 1300*(A.Kw - kiLo - 50);
+                        return price;
+                    }
+                kiLo+=50;
+            }
+            price = price +(A.Kw - kiLo)*pTable[i];
+            return price;
+        }
+    }
+}

@@ -1,0 +1,47 @@
+using System;
+namespace Students
+{
+    class Student
+    {
+        public string name;
+        public float avarage;
+        public string rank;
+        public Student()
+        {
+            Console.Write("Enter name of student: ");
+            name = Console.ReadLine();
+            Console.Write("Enter avarage score: ");
+            avarage = float.Parse(Console.ReadLine());
+        }
+    }
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            Student A = new Student();
+            FindAppellation(ref A);
+            Console.Write("Appellation is {0}",A.rank);
+        }
+        static void FindAppellation(ref Student A)
+        {
+            float[] LeftLM = new float[] {0,5,6.5f,8.5f};
+            float[] RightLM = new float[] {5,6.5f,8.5f,10};
+            string[] appell = new string[] {"Weak","Avarage","Good","Excellent"};
+            for(int i = 0 ;i<4;i++)
+            {
+                if(A.avarage>=LeftLM[i]&&A.avarage<RightLM[i])
+                    A.rank = appell[i];
+            }
+            /*if(A.avarage>=5)
+            {
+                if(A.avarage>=5&&A.avarage<6.5)
+                    A.rank = "Avarage";
+                if(A.avarage>=6.5&&A.avarage<8.5)
+                    A.rank = "Good";
+                if(A.avarage>8.5)
+                    A.rank = "Excellent";
+            }else A.rank = "Weak";
+            */
+        }
+    }
+}

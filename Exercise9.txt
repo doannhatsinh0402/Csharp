@@ -1,0 +1,45 @@
+using System;
+namespace Tax
+{
+    class Person
+    {
+        public string name;
+        public double annualSalary;
+        public int nbOfDefen;
+        public Person()
+        {
+            Console.Write("Enter name of person: ");
+            name = Console.ReadLine();
+            Console.Write("Enter annual salary of person ");
+            annualSalary = double.Parse(Console.ReadLine());
+            Console.Write("Enter number of defendents ");
+            nbOfDefen = Int32.Parse(Console.ReadLine());
+        } 
+    }
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            Person A = new Person();
+            double salary = Findsalary(A);
+            double tax = FindTax(salary);
+            Console.Write("Payable money = {0}", tax*A.annualSalary);
+        }
+        static double FindTax(double salary)
+        {
+            int[] Left = new int[] {0,60000000,120000000,210000000,384000000,624000000,960000000};
+            int[] Right = new int[] {60000000,120000000,210000000,384000000,624000000,960000000,Int32.MaxValue};
+            double[] tax = new double[] {0.05,0.1,0.15,0.2,0.25,0.3,0.35};
+            for(int i = 0; i<7;i++)
+            {
+                if(salary>Left[i]&&salary<=Right[i])
+                    return tax[i];
+            }
+            return -1;
+        }  
+        static double Findsalary(Person A)
+        {
+            return A.annualSalary-4000000-(A.nbOfDefen*1600000);
+        }
+    }
+}

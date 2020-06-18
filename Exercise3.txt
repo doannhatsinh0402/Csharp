@@ -1,0 +1,57 @@
+using System;
+namespace Multipication
+{
+    class Program
+    {
+        //
+        struct Fraction
+        {
+            public int numBerator, denoMinator;
+        }
+        //
+        
+        static void Main(string[] args)
+        {
+            Fraction x = new Fraction();
+            Fraction y = new Fraction();
+            Fraction a = new Fraction();
+            Console.WriteLine("Fractions x: ");
+            EnterFractions(ref x);
+            Console.WriteLine("Frations y:");
+            EnterFractions(ref y);
+            a.numBerator = Multyp(x.numBerator,y.numBerator);
+            a.denoMinator = Multyp(x.denoMinator,y.denoMinator);
+            Simplipy(ref a);
+            Print(a);
+            //Console.Write("x*y = {0}/{1}",a.numBerator,a.denoMinator);
+        }
+        static void Print(Fraction a)
+        {
+            Console.Write("x * y = {0}/{1}",a.numBerator,a.denoMinator);
+        }
+        static void Simplipy(ref Fraction a)
+        {
+            int gcd = GCD(a.numBerator,a.denoMinator);
+            a.numBerator /=gcd;
+            a.denoMinator /=gcd;
+        }
+        static int GCD(int a, int b)
+        {
+            if(b==0) return a;
+            return GCD(b,a%b);
+        }
+        static int Multyp(int a, int b)
+        {
+            int t;
+            t = a*b;
+            return t;
+        }
+        static void EnterFractions(ref Fraction k)
+        {
+            Console.Write("Numberator = ");
+            k.numBerator = Int32.Parse(Console.ReadLine());
+            Console.Write("Denominator = ");
+            k.denoMinator = Int32.Parse(Console.ReadLine());
+        }
+    }
+}

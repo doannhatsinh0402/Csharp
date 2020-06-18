@@ -1,0 +1,32 @@
+using System;
+namespace Taxi
+{
+    class Guest
+    {
+        public string name;
+        public int Kilometers;
+        public Guest()
+        {
+            Console.Write("Enter his name: ");
+            name = Console.ReadLine();
+            Console.Write("Enter km: ");
+            Kilometers = Int32.Parse(Console.ReadLine());
+        }
+    }
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            Guest A = new Guest();
+            Console.WriteLine("Total price = " + Bill(A));
+            Guest B = new Guest();
+            Console.Write("Total price = " + Bill(B));
+        }
+        static int Bill(Guest A)
+        {
+            if(A.Kilometers>1)
+                return (A.Kilometers-1)*9000+11000;
+            return 11000;
+        }
+    }
+}

@@ -1,0 +1,41 @@
+using System;
+namespace Integer
+{
+    class Program
+    {
+        static int n;
+        public static void Main(string[] args)
+        {
+            Enter(ref n);
+            int first , last ; 
+            first = Findfirst(n);
+            last = Findlast(n);
+            Print(first,"First");
+            Print(last,"Last");
+        }
+        static void Print(int a, string b)
+        {
+            Console.WriteLine("{0} number = {1}",b,a);
+        }
+        static int Findlast(int n )
+        {
+            return n%10;
+        }
+        static int Findfirst(int n)
+        {
+            int temp = 0;
+            while(n>0)
+            {
+                if(n<10)
+                    temp = n;
+                n/=10;
+            }
+            return temp;
+        }
+        static void Enter(ref int n)
+        {
+            Console.Write("n = "); 
+            n = Int32.Parse(Console.ReadLine());
+        }
+    }
+}

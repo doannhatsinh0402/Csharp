@@ -1,0 +1,31 @@
+using System;
+namespace InformationStaff
+{
+    class Staff
+    {
+        public string fullName;
+        public DateTime birthDay;
+        public Staff()
+        {
+            Console.Write("Enter his name : ");
+            fullName = Console.ReadLine();
+            Console.Write("Enter your birthday : ");
+            birthDay = DateTime.Parse(Console.ReadLine());
+        }
+    }
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            Staff NV = new Staff();
+            DateTime retire = FindRetirement(NV);
+            Console.Write("Retirement : {0} ",retire);
+        }
+        static DateTime FindRetirement(Staff NV)
+        {
+            DateTime retiredate;
+            retiredate = new DateTime(NV.birthDay.Year + 60, NV.birthDay.Month, NV.birthDay.Day);    
+            return retiredate;
+        }
+    }
+}

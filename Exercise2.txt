@@ -1,0 +1,31 @@
+using System;
+namespace Distance
+{
+    class Exercise2
+    {
+        struct Point
+        {
+            public int x,y;
+        }
+        static void Main(string[] args)
+        {
+            int a,b,c;
+            double h;
+            Point M;
+            Console.WriteLine("ax+by+c=0");
+            Console.Write("a = ");
+            a = Int32.Parse(Console.ReadLine());
+            Console.Write("b = ");
+            b = Int32.Parse(Console.ReadLine());
+            Console.Write("c = ");
+            c = Int32.Parse(Console.ReadLine());
+            Console.WriteLine("M(x,y)");
+            Console.Write("x = ");
+            M.x = Int32.Parse(Console.ReadLine());
+            Console.Write("y = ");
+            M.y = Int32.Parse(Console.ReadLine());
+            h = Math.Abs(a*M.x+b*M.y+c)/Math.Sqrt(a*a+b*b); 
+            Console.Write("Distance = {0}", h);
+        }
+    }
+}
